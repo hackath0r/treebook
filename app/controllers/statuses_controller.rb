@@ -5,11 +5,22 @@ class StatusesController < ApplicationController
   # GET /statuses.json
   def index
     @statuses = Status.all
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @statuses }
+    end
   end
 
   # GET /statuses/1
   # GET /statuses/1.json
   def show
+     @statuses = Status.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @statuses }
+    end
   end
 
   # GET /statuses/new
